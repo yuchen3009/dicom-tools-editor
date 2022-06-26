@@ -70,13 +70,15 @@
             this.粘贴PToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.帮助LToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.thumbnailPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
+            this.mainSplitContainer.Panel1.SuspendLayout();
+            this.mainSplitContainer.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,7 +91,7 @@
             this.帮助HToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1193, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(984, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -330,7 +332,7 @@
             this.帮助LToolStripButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 25);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1193, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(984, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -416,48 +418,59 @@
             this.帮助LToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.帮助LToolStripButton.Text = "帮助(&L)";
             // 
-            // splitContainer1
+            // mainSplitContainer
             // 
-            this.splitContainer1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
+            this.mainSplitContainer.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.mainSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.mainSplitContainer.Location = new System.Drawing.Point(0, 0);
+            this.mainSplitContainer.Name = "mainSplitContainer";
             // 
-            // splitContainer1.Panel1
+            // mainSplitContainer.Panel1
             // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Black;
+            this.mainSplitContainer.Panel1.BackColor = System.Drawing.Color.Black;
+            this.mainSplitContainer.Panel1.Controls.Add(this.thumbnailPanel);
             // 
-            // splitContainer1.Panel2
+            // mainSplitContainer.Panel2
             // 
-            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.Black;
-            this.splitContainer1.Size = new System.Drawing.Size(1193, 627);
-            this.splitContainer1.SplitterDistance = 200;
-            this.splitContainer1.SplitterWidth = 1;
-            this.splitContainer1.TabIndex = 2;
+            this.mainSplitContainer.Panel2.BackColor = System.Drawing.Color.Black;
+            this.mainSplitContainer.Size = new System.Drawing.Size(984, 489);
+            this.mainSplitContainer.SplitterDistance = 190;
+            this.mainSplitContainer.SplitterWidth = 1;
+            this.mainSplitContainer.TabIndex = 2;
+            // 
+            // thumbnailPanel
+            // 
+            this.thumbnailPanel.AutoScroll = true;
+            this.thumbnailPanel.AutoSize = true;
+            this.thumbnailPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.thumbnailPanel.Location = new System.Drawing.Point(0, 0);
+            this.thumbnailPanel.Name = "thumbnailPanel";
+            this.thumbnailPanel.Size = new System.Drawing.Size(190, 489);
+            this.thumbnailPanel.TabIndex = 0;
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 677);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1193, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(984, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.splitContainer1);
+            this.panel1.Controls.Add(this.mainSplitContainer);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 50);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1193, 627);
+            this.panel1.Size = new System.Drawing.Size(984, 489);
             this.panel1.TabIndex = 4;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1193, 699);
+            this.ClientSize = new System.Drawing.Size(984, 561);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
@@ -470,8 +483,10 @@
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.mainSplitContainer.Panel1.ResumeLayout(false);
+            this.mainSplitContainer.Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).EndInit();
+            this.mainSplitContainer.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -521,8 +536,9 @@
         private ToolStripButton 粘贴PToolStripButton;
         private ToolStripSeparator toolStripSeparator7;
         private ToolStripButton 帮助LToolStripButton;
-        private SplitContainer splitContainer1;
+        private SplitContainer mainSplitContainer;
         private StatusStrip statusStrip1;
         private Panel panel1;
+        private FlowLayoutPanel thumbnailPanel;
     }
 }
