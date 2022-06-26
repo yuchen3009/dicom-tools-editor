@@ -16,53 +16,68 @@ namespace dicomeditor.components
 {
     public partial class ImageDisplayCtl : UserControl
     {
+        public ImageDisplayCtl()
+        {
+            InitializeComponent();
+
+        }
+        public ImageDisplayCtl(string filename)
+        {
+            InitializeComponent();
+
+            DicomFile dicomFile = DicomFile.Open(filename);
+            _dataset = dicomFile.Dataset;
+
+            RenderInternal();
+        }
+
         public ImageDisplayCtl(DicomDataset dataset)
         {
             InitializeComponent();
 
             _dataset = dataset;
-            var dicomImage = new DicomImage(_dataset);
-            IImage iImage = dicomImage.RenderImage(0);
-            var sharpImage = iImage.AsSharpImage();
+            //var dicomImage = new DicomImage(_dataset);
+            //IImage iImage = dicomImage.RenderImage(0);
+            //var sharpImage = iImage.AsSharpImage();
 
-            using var output = new MemoryStream();
-            sharpImage.Save(output, new SixLabors.ImageSharp.Formats.Bmp.BmpEncoder());
-            output.Position = 0;
+            //using var output = new MemoryStream();
+            //sharpImage.Save(output, new SixLabors.ImageSharp.Formats.Bmp.BmpEncoder());
+            //output.Position = 0;
 
-            var bitmap = Bitmap.FromStream(output);
-            pictureBox1.Image = bitmap;
+            //var bitmap = Bitmap.FromStream(output);
+            //pictureBox1.Image = bitmap;
 
-            ShowInfo();
+            RenderInternal();
+
         }
-        public ImageDisplayCtl(Image img)
+        public void Render(string filename)
         {
-            InitializeComponent();
-            pictureBox1.Image = img;
+            DicomFile dicomFile = DicomFile.Open(filename);
+            _dataset = dicomFile.Dataset;
 
-            //Label lab1 = new Label();
-            //lab1.Text = "测试文本显示";
-            //lab1.Top = 20;
-            //lab1.Left = 20;
-            //lab1.AutoEllipsis = true;
-            //lab1.AutoSize = true;
-            //lab1.Font = new Font("宋休", 16, FontStyle.Regular, GraphicsUnit.Pixel);
-            //lab1.ForeColor = Color.Red;
-            //lab1.BackColor = Color.Transparent;
-            //pictureBox1.Controls.Add(lab1);
-            //lab1.BringToFront();
+            RenderInternal();
+        }
 
-            string filename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resources/ct.dcm");
-            _dataset = DicomFile.Open(filename).Dataset;
+        public void Render(DicomDataset dataset)
+        {
+            _dataset = dataset;
+            RenderInternal();
+
+        }
+
+        private void RenderInternal()
+        {
+            pictureBox1.Image = Bitmap.FromFile(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resources/pic-01.bmp"));
+           
             ShowInfo();
-
         }
 
         private void ShowInfo()
         {
             ShowInfoLeftTop();
-            ShowInfoRightTop();
-            ShowInfoLeftBottom();
-            ShowInfoRightBottom();
+            //ShowInfoRightTop();
+            //ShowInfoLeftBottom();
+            //ShowInfoRightBottom();
         }
 
         private void ShowInfoLeftTop()
@@ -95,7 +110,7 @@ namespace dicomeditor.components
                 lab1.Font = new Font("宋休", 12, FontStyle.Regular, GraphicsUnit.Pixel);
                 lab1.ForeColor = Color.Red;
                 lab1.BackColor = Color.Transparent;
-                lab1.BackColor = Color.White;
+                //lab1.BackColor = Color.White;
                 pictureBox1.Controls.Add(lab1);
                 i++;
             }
@@ -212,6 +227,6 @@ namespace dicomeditor.components
 
         }
 
-        private DicomDataset _dataset;
+        private DicomDataset? _dataset;
     }
 }
