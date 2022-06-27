@@ -43,6 +43,7 @@ namespace dicomeditor.ViewModels
             }
 
             CurrentStudy = selectedStudyInfo;
+            CurrentDicomFileInfo = new DicomFileInfo { Filename = filename };
             return selectedStudyInfo;
         }
     }

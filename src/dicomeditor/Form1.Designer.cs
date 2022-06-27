@@ -51,8 +51,8 @@
             this.粘贴PToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.全选AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tAG列表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_lookup = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_lookup_tags = new System.Windows.Forms.ToolStripMenuItem();
             this.工具TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.自定义CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.选项OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,7 +90,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.meun_file,
             this.编辑EToolStripMenuItem,
-            this.查看ToolStripMenuItem,
+            this.menu_lookup,
             this.工具TToolStripMenuItem,
             this.帮助HToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -123,35 +123,35 @@
             this.meun_file_open.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.meun_file_open.Name = "meun_file_open";
             this.meun_file_open.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.meun_file_open.Size = new System.Drawing.Size(180, 22);
+            this.meun_file_open.Size = new System.Drawing.Size(165, 22);
             this.meun_file_open.Text = "打开(&O)";
             this.meun_file_open.Click += new System.EventHandler(this.meun_file_open_Click);
             // 
             // menu_file_open_folder
             // 
             this.menu_file_open_folder.Name = "menu_file_open_folder";
-            this.menu_file_open_folder.Size = new System.Drawing.Size(180, 22);
+            this.menu_file_open_folder.Size = new System.Drawing.Size(165, 22);
             this.menu_file_open_folder.Text = "打开文件夹";
             this.menu_file_open_folder.Click += new System.EventHandler(this.menu_file_open_folder_Click);
             // 
             // menu_file_append
             // 
             this.menu_file_append.Name = "menu_file_append";
-            this.menu_file_append.Size = new System.Drawing.Size(180, 22);
+            this.menu_file_append.Size = new System.Drawing.Size(165, 22);
             this.menu_file_append.Text = "追加文件";
             this.menu_file_append.Click += new System.EventHandler(this.menu_file_append_Click);
             // 
             // menu_file_append_folder
             // 
             this.menu_file_append_folder.Name = "menu_file_append_folder";
-            this.menu_file_append_folder.Size = new System.Drawing.Size(180, 22);
+            this.menu_file_append_folder.Size = new System.Drawing.Size(165, 22);
             this.menu_file_append_folder.Text = "追加文件夹";
             this.menu_file_append_folder.Click += new System.EventHandler(this.menu_file_append_folder_Click);
             // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator.Size = new System.Drawing.Size(162, 6);
             // 
             // menu_file_save
             // 
@@ -159,40 +159,40 @@
             this.menu_file_save.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menu_file_save.Name = "menu_file_save";
             this.menu_file_save.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.menu_file_save.Size = new System.Drawing.Size(180, 22);
+            this.menu_file_save.Size = new System.Drawing.Size(165, 22);
             this.menu_file_save.Text = "保存(&S)";
             this.menu_file_save.Click += new System.EventHandler(this.menu_file_save_Click);
             // 
             // menu_file_save_all
             // 
             this.menu_file_save_all.Name = "menu_file_save_all";
-            this.menu_file_save_all.Size = new System.Drawing.Size(180, 22);
+            this.menu_file_save_all.Size = new System.Drawing.Size(165, 22);
             this.menu_file_save_all.Text = "保存所有";
             this.menu_file_save_all.Click += new System.EventHandler(this.menu_file_save_all_Click);
             // 
             // menu_file_save_as
             // 
             this.menu_file_save_as.Name = "menu_file_save_as";
-            this.menu_file_save_as.Size = new System.Drawing.Size(180, 22);
+            this.menu_file_save_as.Size = new System.Drawing.Size(165, 22);
             this.menu_file_save_as.Text = "另存为(&A)";
             this.menu_file_save_as.Click += new System.EventHandler(this.menu_file_save_as_Click);
             // 
             // menu_file_save_as_all
             // 
             this.menu_file_save_as_all.Name = "menu_file_save_as_all";
-            this.menu_file_save_as_all.Size = new System.Drawing.Size(180, 22);
+            this.menu_file_save_as_all.Size = new System.Drawing.Size(165, 22);
             this.menu_file_save_as_all.Text = "所有影像另存为";
             this.menu_file_save_as_all.Click += new System.EventHandler(this.menu_file_save_as_all_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(162, 6);
             // 
             // menu_file_exit
             // 
             this.menu_file_exit.Name = "menu_file_exit";
-            this.menu_file_exit.Size = new System.Drawing.Size(180, 22);
+            this.menu_file_exit.Size = new System.Drawing.Size(165, 22);
             this.menu_file_exit.Text = "退出(&X)";
             this.menu_file_exit.Click += new System.EventHandler(this.menu_file_exit_Click);
             // 
@@ -268,19 +268,20 @@
             this.全选AToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.全选AToolStripMenuItem.Text = "全选(&A)";
             // 
-            // 查看ToolStripMenuItem
+            // menu_lookup
             // 
-            this.查看ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tAG列表ToolStripMenuItem});
-            this.查看ToolStripMenuItem.Name = "查看ToolStripMenuItem";
-            this.查看ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.查看ToolStripMenuItem.Text = "查看";
+            this.menu_lookup.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menu_lookup_tags});
+            this.menu_lookup.Name = "menu_lookup";
+            this.menu_lookup.Size = new System.Drawing.Size(44, 21);
+            this.menu_lookup.Text = "查看";
             // 
-            // tAG列表ToolStripMenuItem
+            // menu_lookup_tags
             // 
-            this.tAG列表ToolStripMenuItem.Name = "tAG列表ToolStripMenuItem";
-            this.tAG列表ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.tAG列表ToolStripMenuItem.Text = "TAG列表";
+            this.menu_lookup_tags.Name = "menu_lookup_tags";
+            this.menu_lookup_tags.Size = new System.Drawing.Size(180, 22);
+            this.menu_lookup_tags.Text = "TAG列表";
+            this.menu_lookup_tags.Click += new System.EventHandler(this.menu_lookup_tags_Click);
             // 
             // 工具TToolStripMenuItem
             // 
@@ -568,7 +569,7 @@
         private ToolStripMenuItem menu_file_append_folder;
         private ToolStripMenuItem menu_file_save_all;
         private ToolStripMenuItem menu_file_save_as_all;
-        private ToolStripMenuItem 查看ToolStripMenuItem;
-        private ToolStripMenuItem tAG列表ToolStripMenuItem;
+        private ToolStripMenuItem menu_lookup;
+        private ToolStripMenuItem menu_lookup_tags;
     }
 }

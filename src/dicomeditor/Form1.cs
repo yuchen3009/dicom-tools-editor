@@ -11,6 +11,11 @@ namespace dicomeditor
         public Form1()
         {
             InitializeComponent();
+            Rectangle rect = Screen.GetWorkingArea(this);
+            this.Width = (int)(rect.Width * 0.8);
+            this.Height= (int)(rect.Height * 0.8);
+            this.Top = (rect.Height - this.Height)/2;
+            this.Left = (rect.Width - this.Width)/2;
 
             //string filename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resources/ct.dcm");
             //var dataset = DicomFile.Open(filename).Dataset;
@@ -116,6 +121,17 @@ namespace dicomeditor
         private void menu_file_exit_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private TagFrm _tagFrm;
+        private void menu_lookup_tags_Click(object sender, EventArgs e)
+        {
+            _tagFrm = new TagFrm(DicomFile.Open(_model.CurrentDicomFileInfo.Filename).Dataset);
+            _tagFrm.ShowIcon = false;
+            _tagFrm.ShowInTaskbar = false;
+            _tagFrm.MaximizeBox =false;
+            _tagFrm.MinimizeBox =false;
+            _tagFrm.ShowDialog();
         }
     }
 }
