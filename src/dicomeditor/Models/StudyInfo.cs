@@ -19,7 +19,7 @@ namespace dicomeditor.Models
         public string? StudyDescription { get; set; }
         public string? PatientAge { get; set; }
 
-        public List<string> Files { get; set; } = new List<string>();
+        public List<DicomReference> Files { get; set; } = new List<DicomReference>();
 
         public static StudyInfo Parse(DicomDataset dataset)
         {

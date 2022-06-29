@@ -279,7 +279,7 @@
             // menu_lookup_tags
             // 
             this.menu_lookup_tags.Name = "menu_lookup_tags";
-            this.menu_lookup_tags.Size = new System.Drawing.Size(180, 22);
+            this.menu_lookup_tags.Size = new System.Drawing.Size(124, 22);
             this.menu_lookup_tags.Text = "TAG列表";
             this.menu_lookup_tags.Click += new System.EventHandler(this.menu_lookup_tags_Click);
             // 
@@ -461,16 +461,17 @@
             // 
             // mainSplitContainer.Panel2
             // 
-            this.mainSplitContainer.Panel2.BackColor = System.Drawing.Color.Black;
+            this.mainSplitContainer.Panel2.BackColor = System.Drawing.Color.Gray;
             this.mainSplitContainer.Size = new System.Drawing.Size(984, 489);
             this.mainSplitContainer.SplitterDistance = 190;
-            this.mainSplitContainer.SplitterWidth = 1;
+            this.mainSplitContainer.SplitterWidth = 2;
             this.mainSplitContainer.TabIndex = 2;
             // 
             // thumbnailPanel
             // 
             this.thumbnailPanel.AutoScroll = true;
             this.thumbnailPanel.AutoSize = true;
+            this.thumbnailPanel.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.thumbnailPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.thumbnailPanel.Location = new System.Drawing.Point(0, 0);
             this.thumbnailPanel.Name = "thumbnailPanel";

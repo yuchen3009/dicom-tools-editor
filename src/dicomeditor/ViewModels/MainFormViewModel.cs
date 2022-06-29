@@ -10,8 +10,8 @@ namespace dicomeditor.ViewModels
 {
     public class MainFormViewModel
     {
-        public StudyInfo CurrentStudy { get; set; }
-        public DicomFileInfo CurrentDicomFileInfo { get; set; }
+        public StudyInfo? CurrentStudy { get; set; }
+        public DicomReference? CurrentDicomReference{ get; set; }
 
         public List<StudyInfo> Studies { get; set; } = new List<StudyInfo>();
 
@@ -22,29 +22,34 @@ namespace dicomeditor.ViewModels
         /// <returns>检查</returns>
         public StudyInfo AddOrAppend(string filename)
         {
-            DicomFile dicomFile = DicomFile.Open(filename);
-            var ds = dicomFile.Dataset;
+            DicomReference dicomReference = new DicomReference(filename);
+            var ds = dicomReference.Dataset;
 
             string studyiuid = string.Empty;
             ds.TryGetString(DicomTag.StudyInstanceUID, out studyiuid);
 
             StudyInfo selectedStudyInfo;
-
             if (Studies.Any(p => p.StudyInstanceUID == studyiuid))
             {
                 selectedStudyInfo = Studies.Where(p => p.StudyInstanceUID == studyiuid).First();
-                selectedStudyInfo.Files.Add(filename);
+                selectedStudyInfo.Files.Add(dicomReference);
             }
             else
             {
                 selectedStudyInfo = StudyInfo.Parse(ds);
-                selectedStudyInfo.Files.Add(filename);
+                selectedStudyInfo.Files.Add(dicomReference);
                 Studies.Add(selectedStudyInfo);
             }
 
             CurrentStudy = selectedStudyInfo;
-            CurrentDicomFileInfo = new DicomFileInfo { Filename = filename };
+            CurrentDicomReference = dicomReference;
             return selectedStudyInfo;
+        }
+        public void Clear()
+        {
+            Studies.Clear();
+            CurrentDicomReference = null;
+            CurrentStudy = null;
         }
     }
 }

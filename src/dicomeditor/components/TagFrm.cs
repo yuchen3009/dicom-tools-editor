@@ -1,4 +1,5 @@
-﻿using FellowOakDicom;
+﻿using dicomeditor.Models;
+using FellowOakDicom;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,16 +14,29 @@ namespace dicomeditor.components
 {
     public partial class TagFrm : Form
     {
-        private DicomDataset _dataset;
+        private DicomReference? _dicomReference;
+        private DicomDataset? _dataset;
         private TagListCtl _tagListCtl;
-        public TagFrm(DicomDataset dataset)
+        public TagFrm()
         {
             InitializeComponent();
-            _dataset = dataset;
+        }
+        public TagFrm(DicomReference dicomReference)
+        {
+            InitializeComponent();
+            _dicomReference = dicomReference;
+            _dataset = dicomReference.Dataset;
 
             _tagListCtl = new TagListCtl(_dataset);
             _tagListCtl.Dock = DockStyle.Fill;
             panel_tags.Controls.Add(_tagListCtl);
+        }
+
+        public void Render(DicomReference dicomReference)
+        {
+            _dicomReference = dicomReference;
+            _dataset = _dicomReference.Dataset;
+
         }
     }
 }

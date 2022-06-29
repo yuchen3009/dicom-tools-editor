@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using dicomeditor.Models;
 
 namespace dicomeditor.components
 {
@@ -20,11 +21,19 @@ namespace dicomeditor.components
         private List<List<DicomTag>> _rightTopCorner = new List<List<DicomTag>>();
         private List<List<DicomTag>> _leftBottomCorner = new List<List<DicomTag>>();
         private List<List<DicomTag>> _rightBottomCorner = new List<List<DicomTag>>();
+
         public ImageDisplayCtl()
         {
             InitializeComponent();
             Init();
             _dataset = new DicomDataset();
+
+        }
+        public ImageDisplayCtl(DicomReference dicomReference)
+        {
+            InitializeComponent();
+            Init();
+            _dataset = dicomReference.Dataset;
 
         }
         public ImageDisplayCtl(string filename)
@@ -78,6 +87,12 @@ namespace dicomeditor.components
                 new List<DicomTag>(){DicomTag.SeriesDescription }
             };
         }
+        public void Render(DicomReference dicomReference)
+        {
+            _dataset = dicomReference.Dataset;
+
+            RenderInternal();
+        }
         public void Render(string filename)
         {
             DicomFile dicomFile = DicomFile.Open(filename);
@@ -110,6 +125,7 @@ namespace dicomeditor.components
 
         private void ShowInfoLeftTop()
         {
+            pictureBox1.Controls.Clear();
             int i = 0;
             foreach (var item in _leftTopCorner)
             {

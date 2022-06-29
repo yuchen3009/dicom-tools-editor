@@ -1,4 +1,5 @@
 using dicomeditor.components;
+using dicomeditor.Models;
 using dicomeditor.ViewModels;
 using FellowOakDicom;
 
@@ -51,16 +52,38 @@ namespace dicomeditor
         {
             if (!append)
             {
+                _model.Clear();
                 //Çå¿Õ
                 thumbnailPanel.Controls.Clear();
             }
 
             var studyinfo = _model.AddOrAppend(filename);
-            var thumbnail = new ImageThumbsCtl(studyinfo)
+
+            ImageThumbsCtl thumbnail = null;
+
+            for (int i = 0; i < thumbnailPanel.Controls.Count; i++)
             {
-                Margin = new Padding(5)
-            };
-            thumbnailPanel.Controls.Add(thumbnail);
+                var ctl = thumbnailPanel.Controls[i];
+                var thumbsCtl = ctl as ImageThumbsCtl;
+                if (string.Equals(studyinfo.StudyInstanceUID, thumbsCtl.StudyInstanceUID))
+                {
+                    thumbnail = thumbsCtl;
+                    break;
+                }
+            }
+
+            if (thumbnail != null)
+            {
+                thumbnail.BackColor = Color.DarkRed;
+            }
+            else
+            {
+                thumbnail = new ImageThumbsCtl(studyinfo)
+                {
+                    Margin = new Padding(5)
+                };
+                thumbnailPanel.Controls.Add(thumbnail);
+            }
 
             _displayArea.Render(studyinfo.Files.First());
         }
@@ -126,11 +149,12 @@ namespace dicomeditor
         private TagFrm _tagFrm;
         private void menu_lookup_tags_Click(object sender, EventArgs e)
         {
-            _tagFrm = new TagFrm(DicomFile.Open(_model.CurrentDicomFileInfo.Filename).Dataset);
+            _tagFrm = new TagFrm(_model.CurrentDicomReference);
             _tagFrm.ShowIcon = false;
             _tagFrm.ShowInTaskbar = false;
-            _tagFrm.MaximizeBox =false;
-            _tagFrm.MinimizeBox =false;
+            _tagFrm.MaximizeBox = false;
+            _tagFrm.MinimizeBox = false;
+            _tagFrm.StartPosition = FormStartPosition.CenterParent;
             _tagFrm.ShowDialog();
         }
     }
